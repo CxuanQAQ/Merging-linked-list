@@ -23,7 +23,7 @@
 ```c
 typedef struct LNode {
 	int data;				//数据域
-	struct LNode *next;		 //指针域
+	struct LNode *next;		 	//指针域
 }LNode,*LinkList;
 
 int flag;					//标志变量			
@@ -33,18 +33,18 @@ int flag;					//标志变量
 
 ```c
 LinkList ListCreat_1(LNode *L);				    	  //链表灵活创建
-LinkList ListCreat_2(int len);					      //链表指定元素创建		
+LinkList ListCreat_2(int len);					  //链表指定元素创建		
 LinkList ListInitiate(LinkList head);				  //链表初始化
-LinkList ListInsert(LinkList head,int i,int x);		   //元素插入
-LinkList ListDelete(LinkList head,int i);			   //节点删除
-LinkList ListModify(LNode* head,int index, int data);   //元素修改
-int Linklength(LinkList L);							 //求取链表长度
-LinkList ListSort(LinkList head);					  //排序
-LinkList ListUnion(LNode * L1,LNode * L2,LNode *L3);    //合并
-void DisPlay(LNode *L);								 //打印
-void Save(LinkList L,int flag);						 //数据上传
-LinkList Loadin_A(LNode*L);							 //A文件导入
-LinkList Loadin_B(LNode*L);							 //B导文件入
+LinkList ListInsert(LinkList head,int i,int x);		   	  //元素插入
+LinkList ListDelete(LinkList head,int i);			  //节点删除
+LinkList ListModify(LNode* head,int index, int data);   	  //元素修改
+int Linklength(LinkList L);					  //求取链表长度
+LinkList ListSort(LinkList head);			          //排序
+LinkList ListUnion(LNode * L1,LNode * L2,LNode *L3);              //合并
+void DisPlay(LNode *L);						  //打印
+void Save(LinkList L,int flag);				          //数据上传
+LinkList Loadin_A(LNode*L);					  //A文件导入
+LinkList Loadin_B(LNode*L);					  //B导文件入
 ```
 
 ### 核心功能详解
@@ -53,7 +53,7 @@ LinkList Loadin_B(LNode*L);							 //B导文件入
 
 ```c
 LinkList ListUnion(LNode *l1,LNode *l2,LNode *l3){//主函数调用时已经判断链表A和B的长度，将长的传给l1
-	LinkList p,q,r,s;				    //工具指针
+	LinkList p,q,r,s;				    		//工具指针
 	l3=(LinkList)malloc(sizeof(LNode));  //L3头节点
 	p=l1->next;							//p指向长链表的首元节点
 	q=l2->next;							//p指向短链表的首元节点
@@ -62,13 +62,13 @@ LinkList ListUnion(LNode *l1,LNode *l2,LNode *l3){//主函数调用时已经判�
     
 	//先将长链表的data域值赋给新链表的节点，后将短链表的data域的值赋值给下一个节点，直到q指向空，即短链表已经无元素可赋
 	while(p&&q){
-		s=(LinkList)malloc(sizeof(LNode));	 //尾插法，生成新节点
-		s->data=p->data;				    //赋值
-		r->next=s;						    //连接
-			r=s;						   //后移
-		p=p->next;							//被操作链表工具指针后移
+		s=(LinkList)malloc(sizeof(LNode));	 		//尾插法，生成新节点
+		s->data=p->data;				    	//赋值
+		r->next=s;						//连接
+			r=s;						//后移
+		p=p->next;						//被操作链表工具指针后移
 		
-		s=(LinkList)malloc(sizeof(LNode));	//尾插法（同上）
+		s=(LinkList)malloc(sizeof(LNode));		//尾插法（同上）
 		s->data=q->data;
 		r->next=s;
 			r=s;
@@ -77,7 +77,7 @@ LinkList ListUnion(LNode *l1,LNode *l2,LNode *l3){//主函数调用时已经判�
 		r->next=NULL;						//尾指针置空
 	
     //将长链表未经合并的元素尾插至新链表之后
-	if (p) {								//p之后还有元素
+	if (p) {							//p之后还有元素
 		while(p){							
 		s=(LinkList)malloc(sizeof(LNode));		//尾插（过程同上）
 		s->data=p->data;
